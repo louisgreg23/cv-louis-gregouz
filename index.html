@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Louis Gregouz — Conseiller Commercial</title>
+<meta name="description" content="CV de Louis Gregouz, Conseiller Commercial.">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --noir:        #0a0908;
+  --noir-carte:  #161210;
+  --noir-veine:  #221c17;
+  --or:          #c9a64a;
+  --or-vif:      #e8c873;
+  --or-pale:     #f1e3bb;
+  --rouge:       #6e1414;
+  --ivoire:      #ece4d3;
+  --ombre:       rgba(0,0,0,.6);
+
+  --font-display: "Cinzel", "Playfair Display", "Times New Roman", serif;
+  --font-corps:   "Jost", "Helvetica Neue", Arial, sans-serif;
+
+  --rayure: 1px;
+  --rayon: 2px;
+}
+
+@font-face{
+  font-family:"Cinzel";
+  src: local("Cinzel");
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -10%, #1c1611 0%, var(--noir) 55%),
+    repeating-linear-gradient(115deg, rgba(255,255,255,.015) 0px, rgba(255,255,255,.015) 1px, transparent 1px, transparent 14px),
+    var(--noir);
+  color: var(--ivoire);
+  font-family: var(--font-corps);
+  font-weight: 300;
+  letter-spacing: .02em;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Texture marbre subtile en fond global */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(201,166,74,.04), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(201,166,74,.05), transparent 45%),
+    radial-gradient(circle at 50% 95%, rgba(201,166,74,.03), transparent 50%);
+  pointer-events:none;
+  z-index:0;
+}
+
+a{ color: var(--or-vif); }
+
+::selection{ background: var(--or); color: var(--noir); }
+
+/* Focus visible accessible */
+a:focus-visible, button:focus-visible{
+  outline: 2px solid var(--or-vif);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+/* ============================================================
+   CADRE ORNEMENTAL — motif répété, signature de la page
+   ============================================================ */
+.cadre-or{
+  border: var(--rayure) solid rgba(201,166,74,.45);
+  position: relative;
+}
+.cadre-or::before{
+  content:"";
+  position:absolute;
+  inset: 6px;
+  border: 1px solid rgba(201,166,74,.18);
+  pointer-events:none;
+}
+.coin{
+  position:absolute;
+  width:18px; height:18px;
+  border: 1px solid var(--or);
+}
+.coin.haut-gauche{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+.coin.haut-droit{ top:-1px; right:-1px; border-left:none; border-bottom:none; }
+.coin.bas-gauche{ bottom:-1px; left:-1px; border-right:none; border-top:none; }
+.coin.bas-droit{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+
+/* ============================================================
+   LAYOUT GENERAL
+   ============================================================ */
+.page{
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: clamp(20px, 5vw, 60px) clamp(16px, 5vw, 40px) 80px;
+}
+
+.filigrane{
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%) rotate(-18deg);
+  font-family: var(--font-display);
+  font-size: clamp(60px, 14vw, 220px);
+  color: rgba(201,166,74,.025);
+  letter-spacing: .1em;
+  white-space: nowrap;
+  z-index: 0;
+  pointer-events:none;
+  user-select:none;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  text-align:center;
+  padding: 50px clamp(16px,4vw,50px) 46px;
+  margin-bottom: 56px;
+  background: linear-gradient(180deg, var(--noir-carte), var(--noir-veine));
+  position: relative;
+  animation: monteeRideau 900ms cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes monteeRideau{
+  from{ opacity:0; transform: translateY(18px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.hero-eyebrow{
+  font-family: var(--font-corps);
+  font-size: .72rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin: 0 0 18px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after{
+  content:"◆";
+  color: var(--or);
+  margin: 0 14px;
+  font-size: .6rem;
+  vertical-align: middle;
+}
+
+.portrait-cadre{
+  width: 148px;
+  height: 148px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  position: relative;
+  padding: 6px;
+  background: conic-gradient(from 0deg, var(--or-pale), var(--rouge) 25%, var(--or) 50%, var(--rouge) 75%, var(--or-pale));
+  box-shadow: 0 0 0 1px rgba(201,166,74,.3), 0 18px 40px -10px rgba(0,0,0,.8);
+}
+.portrait-cadre img{
+  width:100%; height:100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display:block;
+  border: 3px solid var(--noir);
+}
+/* Si la photo ne charge pas, on affiche un monogramme élégant à la place */
+.portrait-cadre .secours{
+  width:100%; height:100%;
+  border-radius:50%;
+  border: 3px solid var(--noir);
+  background: var(--noir-veine);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  color: var(--or-vif);
+}
+
+.hero h1{
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: .04em;
+  margin: 0 0 10px;
+  color: var(--or-pale);
+  text-shadow: 0 2px 0 rgba(0,0,0,.5), 0 0 40px rgba(201,166,74,.15);
+}
+
+.hero .titre-poste{
+  font-family: var(--font-corps);
+  font-size: clamp(.95rem, 2.4vw, 1.15rem);
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin: 0 0 26px;
+}
+
+.devise{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(.95rem, 2.2vw, 1.15rem);
+  color: rgba(236,228,211,.75);
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 18px;
+}
+.devise::before{
+  content:"";
+  position:absolute;
+  top:0; left:50%;
+  transform: translateX(-50%);
+  width: 70px; height:1px;
+  background: linear-gradient(90deg, transparent, var(--or), transparent);
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section{
+  margin-bottom: 50px;
+}
+
+.section-titre{
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--or-pale);
+  display:flex;
+  align-items:center;
+  gap: 18px;
+  margin: 0 0 28px;
+}
+.section-titre::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background: linear-gradient(90deg, var(--or), transparent);
+}
+.section-titre .numero{
+  font-family: var(--font-corps);
+  font-size: .75rem;
+  letter-spacing: .1em;
+  color: var(--noir);
+  background: var(--or);
+  width: 30px; height:30px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+
+/* ---- Compétences : grille de plaques façon médaillons ---- */
+.grille-competences{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px,1fr));
+  gap: 16px;
+}
+.plaque{
+  background: linear-gradient(160deg, var(--noir-carte), var(--noir-veine));
+  padding: 22px 18px;
+  text-align:center;
+  position:relative;
+  transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+}
+.plaque:hover, .plaque:focus-visible{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -12px rgba(0,0,0,.7), 0 0 0 1px rgba(201,166,74,.5);
+}
+.plaque .icone{
+  font-size: 1.6rem;
+  color: var(--or-vif);
+  margin-bottom: 10px;
+  display:block;
+}
+.plaque .nom-competence{
+  font-family: var(--font-corps);
+  font-weight: 500;
+  font-size: .98rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ivoire);
+}
+
+/* ---- Expérience / formation : ligne de vie verticale ---- */
+.chronologie{
+  position:relative;
+  padding-left: 34px;
+  border-left: 1px solid rgba(201,166,74,.35);
+}
+.evenement{
+  position:relative;
+  padding-bottom: 32px;
+}
+.evenement:last-child{ padding-bottom:0; }
+.evenement::before{
+  content:"";
+  position:absolute;
+  left:-40px;
+  top:4px;
+  width:11px; height:11px;
+  border-radius:50%;
+  background: var(--noir);
+  border: 2px solid var(--or);
+}
+.evenement .periode{
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--or);
+  display:block;
+  margin-bottom: 6px;
+}
+.evenement h3{
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--or-pale);
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+.evenement p{
+  margin:0;
+  color: rgba(236,228,211,.82);
+  font-size: .96rem;
+  max-width: 60ch;
+}
+
+/* ---- Pied de page / contact ---- */
+.pied{
+  text-align:center;
+  padding-top: 40px;
+  margin-top: 30px;
+  border-top: 1px solid rgba(201,166,74,.25);
+  color: rgba(236,228,211,.55);
+  font-size: .82rem;
+  letter-spacing: .1em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablette */
+@media (max-width: 720px){
+  .page{ padding-top: 24px; }
+  .hero{ padding: 38px 18px 34px; }
+  .section-titre{ gap: 12px; }
+}
+
+/* Mobile */
+@media (max-width: 480px){
+  .hero-eyebrow{ letter-spacing: .2em; font-size: .64rem; }
+  .hero-eyebrow::before, .hero-eyebrow::after{ margin: 0 8px; }
+  .portrait-cadre{ width: 112px; height: 112px; }
+  .hero h1{ font-size: 1.7rem; }
+  .hero .titre-poste{ letter-spacing: .15em; font-size: .8rem; }
+  .grille-competences{ grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .plaque{ padding: 16px 10px; }
+  .chronologie{ padding-left: 26px; }
+  .evenement::before{ left: -32px; }
+  .filigrane{ display:none; }
+}
+
+/* Très petits écrans */
+@media (max-width: 340px){
+  .grille-competences{ grid-template-columns: 1fr 1fr; }
+  .hero h1{ font-size: 1.45rem; }
+}
+
+/* Impression : on garde le noir/or mais sans ombres lourdes */
+@media print{
+  body::before, .filigrane{ display:none; }
+  .plaque:hover{ transform:none; box-shadow:none; }
+}
+</style>
+</head>
+<body>
+
+<div class="filigrane" aria-hidden="true">THE WORLD IS YOURS</div>
+
+<main class="page">
+
+  <!-- ============================== HERO ============================== -->
+  <header class="hero cadre-or">
+    <span class="coin haut-gauche" aria-hidden="true"></span>
+    <span class="coin haut-droit" aria-hidden="true"></span>
+    <span class="coin bas-gauche" aria-hidden="true"></span>
+    <span class="coin bas-droit" aria-hidden="true"></span>
+
+    <p class="hero-eyebrow">Curriculum Vitae</p>
+
+    <div class="portrait-cadre">
+      <img
+        src="src/portrait.jpg"
+        alt="Portrait de Louis Gregouz"
+        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'secours',textContent:'LG'}))"
+      >
+    </div>
+
+    <h1>Louis Gregouz</h1>
+    <p class="titre-poste">Conseiller Commercial</p>
+
+    <p class="devise">« Tout ce que je possède dans cette vie, je le dois à mon courage. »</p>
+  </header>
+
+  <!-- ============================== COMPÉTENCES ============================== -->
+  <section class="section" id="competences" aria-labelledby="titre-competences">
+    <h2 class="section-titre" id="titre-competences">
+      <span class="numero">I</span>
+      Compétences
+    </h2>
+    <div class="grille-competences">
+      <div class="plaque" tabindex="0">
+        <span class="icone" aria-hidden="true">◈</span>
+        <span class="nom-competence">Prospection</span>
+      </div>
+      <div class="plaque" tabindex="0">
+        <span class="icone" aria-hidden="true">◈</span>
+        <span class="nom-competence">Mise en rayon</span>
+      </div>
+      <div class="plaque" tabindex="0">
+        <span class="icone" aria-hidden="true">◈</span>
+        <span class="nom-competence">Négociation</span>
+      </div>
+      <div class="plaque" tabindex="0">
+        <span class="icone" aria-hidden="true">◈</span>
+        <span class="nom-competence">Conseil client</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== EXPÉRIENCE ============================== -->
+  <section class="section" id="experience" aria-labelledby="titre-experience">
+    <h2 class="section-titre" id="titre-experience">
+      <span class="numero">II</span>
+      Expérience
+    </h2>
+    <div class="chronologie">
+      <div class="evenement">
+        <span class="periode">Stage</span>
+        <h3>Concession automobile</h3>
+        <p>Premier contact avec le terrain : prospection de clients et apprentissage du contact client direct, de l'accueil jusqu'au suivi de la relation commerciale.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FORMATION ============================== -->
+  <section class="section" id="formation" aria-labelledby="titre-formation">
+    <h2 class="section-titre" id="titre-formation">
+      <span class="numero">III</span>
+      Formation
+    </h2>
+    <div class="chronologie">
+      <div class="evenement">
+        <span class="periode">Diplôme</span>
+        <h3>Bac Pro Métiers du Commerce et de la Vente (MCV)</h3>
+        <p>Formation orientée vente, conseil client et techniques commerciales.</p>
+      </div>
+      <div class="evenement">
+        <span class="periode">Diplôme</span>
+        <h3>Brevet des collèges</h3>
+        <p>Tronc commun, socle des connaissances générales.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pied">
+    Louis Gregouz — Conseiller Commercial
+  </footer>
+
+</main>
+
+</body>
+</html>
